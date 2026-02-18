@@ -24,10 +24,17 @@ for file in f:
             target_folder_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Test_download',folder_name)
             
             destination_file_path = os.path.join(target_folder_path,file)
+            
             if not os.path.exists(target_folder_path):
                 os.mkdir(target_folder_path)
                 print(f"Created folder: {target_folder_path}")
-
+            if os.path.exists(destination_file_path):
+                name, extension =os.path.splitext(file)
+                counter = 1
+                while os.path.exists(destination_file_path):
+                    newfile_name = name + "_" + str(counter) + extension
+                    destination_file_path = os.path.join(target_folder_path, newfile_name)
+                    counter += 1
 
             shutil.move(source_path,destination_file_path)
             print(f"Moved '{file}' from '{source_path}' to '{destination_file_path}'")
