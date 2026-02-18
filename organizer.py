@@ -6,13 +6,16 @@ f = os.listdir("C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads")
 file_types = {
     ".pdf":"PDF_files",
     ".jpeg":"Images",
+    ".jpg":"Images",
+    ".png":"Images",
+    ".docx":"Documents",
     ".doc":"Documents"
     }
 
 
 for file in f:
     for ext in file_types:
-        if file.endswith(ext):
+        if file.lower().endswith(ext):
             folder_name = file_types[ext]
             source_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads/',file)
             target_folder_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Test_download',folder_name)
