@@ -14,6 +14,9 @@ file_types = {
 
 
 for file in f:
+    item_full_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads',file)
+    if not os.path.isfile(item_full_path):
+        continue
     for ext in file_types:
         if file.lower().endswith(ext):
             folder_name = file_types[ext]
