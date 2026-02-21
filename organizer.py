@@ -1,7 +1,11 @@
 import os
 import shutil
 
-f = os.listdir("C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads")
+
+
+source_dir = "C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads"
+destination_base_dir = 'C:/Users/Saipa/OneDrive/Desktop/Test_download'
+f =os.listdir(source_dir)
 
 file_types = {
     ".pdf":"PDF_files",
