@@ -1,9 +1,10 @@
+from pathlib import Path
 import os
 import shutil
 
 
-
-source_dir = "C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads"
+source_dir = str(Path.home() / "Downloads")
+#source_dir = "C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads"
 destination_base_dir = 'C:/Users/Saipa/OneDrive/Desktop/Test_download'
 f =os.listdir(source_dir)
 
@@ -18,7 +19,7 @@ file_types = {
 
 
 for file in f:
-    item_full_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads',file)
+    item_full_path = os.path.join(source_dir,file)
     if not os.path.isfile(item_full_path):
         continue
     matched = False
@@ -27,8 +28,8 @@ for file in f:
         if file.lower().endswith(ext):
             matched = True
             folder_name = file_types[ext]
-            source_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads/',file)
-            target_folder_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Test_download',folder_name)
+            source_path = os.path.join(source_dir,file)
+            target_folder_path = os.path.join(destination_base_dir,folder_name)
             destination_file_path = os.path.join(target_folder_path,file)   
             if not os.path.exists(target_folder_path):
                 os.mkdir(target_folder_path)
@@ -45,9 +46,9 @@ for file in f:
             break
     if not matched:
         folder_name = "Others"
-        target_folder_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Test_download',folder_name)
+        target_folder_path = os.path.join(destination_base_dir,folder_name)
         destination_file_path = os.path.join(target_folder_path,file)
-        source_path = os.path.join('C:/Users/Saipa/OneDrive/Desktop/Dummy_Downloads/',file)
+        source_path = os.path.join(source_dir,file)
         if not os.path.exists(target_folder_path):
             os.mkdir(target_folder_path)
             print(f"Created folder: {target_folder_path}")
